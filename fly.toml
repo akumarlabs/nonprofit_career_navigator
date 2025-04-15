@@ -7,6 +7,11 @@ app = "nonprofit-career-navigator"
   FLASK_ENV = "production"
   PORT = "8080"
 
+[vm]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = 1024
+
 [[services]]
   internal_port = 8080
   protocol = "tcp"
