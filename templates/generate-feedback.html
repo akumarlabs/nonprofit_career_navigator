@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Generate Resume Feedback</h2>
+
+{% if user %}
+  <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
+    <i class="bi bi-exclamation-triangle-fill fs-4 flex-shrink-0"></i>
+    <div>
+      <strong>Prototype Notice:</strong> This tool is currently in prototype mode.  
+      <br>Upload your resume and paste a job URL to get feedback.
+    </div>
+  </div>
+
+  <!-- Upload form -->
+  <form id="feedback-form" method="POST" enctype="multipart/form-data" class="mb-4">
+    <div class="mb-3">
+      <label for="resume" class="form-label">Upload Resume (PDF or DOCX)</label>
+      <input type="file" name="resume" id="resume" accept=".pdf,.docx" required class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="job_url" class="form-label">Job Description URL</label>
+      <input type="url" name="job_url" id="job_url" class="form-control" placeholder="https://example.com/job-posting">
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Resume Feedback</button>
+  </form>
+
+  <!-- Loading spinner (hidden until form submission) -->
+  <div id="loading-spinner" class="text-center d-none mt-5">
+    <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3">Running analysis... this may take a few seconds.</p>
+  </div>
+
+  <!-- Link to report if results exist -->
+  {% if results %}
+    <div class="alert alert-success mt-4">
+      ✅ Feedback complete. <a href="{{ url_for('report') }}" class="alert-link">View your full report</a>.
+    </div>
+  {% endif %}
+
+  <!-- JS to toggle loading spinner -->
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', function () {
+      this.classList.add('d-none');
+      document.getElementById('loading-spinner').classList.remove('d-none');
+    });
+  </script>
+
+{% else %}
+  <p>Please <a href="/">log in</a> to view this content.</p>
+{% endif %}
+{% endblock %}

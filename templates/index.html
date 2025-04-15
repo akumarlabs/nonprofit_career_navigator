@@ -1,0 +1,55 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+
+
+
+  <div class="row g-4">
+
+    <!-- Card 1 -->
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-start border-4 border-warning">
+          <div class="card-body">
+            <h5 class="card-title">Built for Mission-Driven Careers</h5>
+            <p class="card-text">
+              Tailored for nonprofits, foundations, and social impact organization.  No generic advice - just focused insights to help you stand out in mission-focused job markets.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- Card 2 -->
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm border-start border-4 border-warning">
+        <div class="card-body">
+          <h5 class="card-title">Upload. Match. Improve.</h5>
+          <p class="card-text">
+            Just upload your <strong>resume</strong> and paste a link to the <strong>job description</strong> - and let the AI agents do the rest.
+          </p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><span class="text-dark fw-bold">Match Score (0 - 100):</span>  See how well your resume aligns with the role</li>
+            <li class="mb-2"><span class="text-dark fw-bold">Strengths & Gaps:</span> Discover what’s working - and what’s missing</li>
+            <li class="mb-2"><span class="text-dark fw-bold">Resume Tips:</span> Get smart, actionable feedback </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mb-4">
+
+        {% if user %}
+          <!-- <p class="lead">You're logged in as <strong>{{ user.emails[0].email }}</strong>.</p>-->
+          <a href="/generate-feedback" class="btn btn-primary">Go to Generate Feedback Page</a>
+        {% else %}
+          <a href="{{ url_for('login_google') }}" class="btn btn-danger btn-lg">
+            <i class="bi bi-google"></i> Sign in with Google
+          </a>
+        {% endif %}
+      </div>
+
+  </div>
+
+</div>
+{% endblock %}

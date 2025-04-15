@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">📋 Resume Intelligence Report</h2>
+
+{% if results %}
+  {% for section, output in results.items() %}
+    <div class="card mb-4 shadow">
+      <div class="card-header bg-primary text-white fw-bold">{{ section }}</div>
+      <div class="card-body">
+        {% if output is mapping %}
+          <ul class="list-group list-group-flush">
+            {% for key, value in output.items() %}
+              <li class="list-group-item">
+                <strong>{{ key | capitalize }}:</strong>
+                {% if value is string %}
+                  {{ value }}
+                {% elif value is iterable %}
+                  <ul>{% for item in value %}<li>{{ item }}</li>{% endfor %}</ul>
+                {% else %}
+                  {{ value }}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <pre>{{ output | tojson(indent=2) }}</pre>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No results to show yet. Please <a href="{{ url_for('generate_feedback') }}">generate feedback</a>.</p>
+{% endif %}
+{% endblock %}

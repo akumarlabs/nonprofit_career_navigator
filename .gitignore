@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# VSCode & PyCharm project settings
+.vscode/
+.idea/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Pytest debug
+.pytest_cache/
+
+# mypy / pylint / static analysis
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Black and other tools
+.black/
+pre-commit.log
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Mac system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Packaging
+*.egg-info/
+dist/
+build/
+
+# dotenv files (optional: only ignore if you store secrets here)
+.env
+.env.*
+
+# Editor backups
+*~
+*.swp
+*.swo
+
+flask_session/
